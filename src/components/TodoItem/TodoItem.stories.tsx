@@ -16,8 +16,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   play: async ({ canvas }) => {
-    await expect(
-      canvas.getByRole("checkbox", { name: "Finish project report" }),
-    ).toBeInTheDocument();
+    const checkbox = canvas.getByRole("checkbox", {
+      name: "Finish project report",
+    });
+    await expect(checkbox).toBeInTheDocument();
+
+    const label = canvas.getByText("Finish project report");
+    const paddingInlineStart =
+      getComputedStyle(label).getPropertyValue("padding-inline-start");
+    await expect(paddingInlineStart).toBe("12px");
   },
 };
