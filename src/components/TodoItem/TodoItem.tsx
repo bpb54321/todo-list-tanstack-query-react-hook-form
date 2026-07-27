@@ -1,9 +1,9 @@
-import { Text } from "@mantine/core";
+import { Checkbox } from "@mantine/core";
 
 export type TodoItemProps = {
   text: string;
 };
 
 export function TodoItem({ text }: TodoItemProps) {
-  return <Text>{text}</Text>;
+  return <Checkbox label={text} />;
 }
