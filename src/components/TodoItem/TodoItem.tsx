@@ -5,5 +5,11 @@ export type TodoItemProps = {
 };
 
 export function TodoItem({ text }: TodoItemProps) {
-  return <Checkbox label={text} />;
+  return (
+    <>
+      <Checkbox label={text} />
+      <button type="button" aria-label="Edit" />
+      <button type="button" aria-label="Delete" />
+    </>
+  );
 }

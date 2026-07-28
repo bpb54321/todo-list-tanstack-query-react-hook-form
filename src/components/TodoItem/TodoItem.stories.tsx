@@ -22,8 +22,15 @@ export const Default: Story = {
     await expect(checkbox).toBeInTheDocument();
 
     const label = canvas.getByText("Finish project report");
-    const paddingInlineStart =
-      getComputedStyle(label).getPropertyValue("padding-inline-start");
+    const paddingInlineStart = getComputedStyle(label).getPropertyValue(
+      "padding-inline-start",
+    );
     await expect(paddingInlineStart).toBe("12px");
+
+    const editButton = canvas.getByRole("button", { name: "Edit" });
+    await expect(editButton).toBeInTheDocument();
+
+    const deleteButton = canvas.getByRole("button", { name: "Delete" });
+    await expect(deleteButton).toBeInTheDocument();
   },
 };
