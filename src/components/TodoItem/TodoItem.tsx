@@ -13,7 +13,7 @@ export function TodoItem({ text }: TodoItemProps) {
       <button type="button" aria-label="Edit" className={classes.actionButton}>
         <IconWritingSign />
       </button>
-      <button type="button" aria-label="Delete">
+      <button type="button" aria-label="Delete" className={classes.actionButton}>
         <IconTrash />
       </button>
     </>

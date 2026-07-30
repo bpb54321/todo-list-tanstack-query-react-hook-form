@@ -33,12 +33,22 @@ export const Default: Story = {
     const editButtonStyles = getComputedStyle(editButton);
     await expect(editButtonStyles.width).toBe("32px");
     await expect(editButtonStyles.height).toBe("32px");
+    await expect(editButtonStyles.borderRadius).toBe("6px");
+    await expect(editButtonStyles.backgroundColor).toBe("rgba(0, 0, 0, 0)");
+    await expect(editButtonStyles.cursor).toBe("pointer");
 
     const editIcon = editButton.querySelector(".tabler-icon-writing-sign");
     await expect(editIcon).toBeInTheDocument();
 
     const deleteButton = canvas.getByRole("button", { name: "Delete" });
     await expect(deleteButton).toBeInTheDocument();
+
+    const deleteButtonStyles = getComputedStyle(deleteButton);
+    await expect(deleteButtonStyles.width).toBe("32px");
+    await expect(deleteButtonStyles.height).toBe("32px");
+    await expect(deleteButtonStyles.borderRadius).toBe("6px");
+    await expect(deleteButtonStyles.backgroundColor).toBe("rgba(0, 0, 0, 0)");
+    await expect(deleteButtonStyles.cursor).toBe("pointer");
 
     const deleteIcon = deleteButton.querySelector(".tabler-icon-trash");
     await expect(deleteIcon).toBeInTheDocument();
