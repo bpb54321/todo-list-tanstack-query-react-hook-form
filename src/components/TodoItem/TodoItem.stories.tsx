@@ -27,14 +27,14 @@ export const Default: Story = {
     await expect(getComputedStyle(checkbox).height).toBe("16px");
     await expect(getComputedStyle(checkbox).borderRadius).toBe("4px");
 
-    const label = canvas.getByText("Finish project report");
-    const paddingInlineStart = getComputedStyle(label).getPropertyValue(
-      "padding-inline-start",
-    );
-    await expect(paddingInlineStart).toBe("12px");
-    await expect(getComputedStyle(label).color).toBe("rgb(0, 0, 0)");
-    await expect(getComputedStyle(label).fontSize).toBe("14px");
-    await expect(getComputedStyle(label).lineHeight).toBe("20px");
+    const text = canvas.getByText("Finish project report");
+    await expect(getComputedStyle(text).color).toBe("rgb(0, 0, 0)");
+    await expect(getComputedStyle(text).fontSize).toBe("14px");
+    await expect(getComputedStyle(text).lineHeight).toBe("20px");
+
+    const content = text.parentElement;
+    await expect(content).not.toBeNull();
+    await expect(getComputedStyle(content!).gap).toBe("12px");
 
     const editButton = canvas.getByRole("button", { name: "Edit" });
     await expect(editButton).toBeInTheDocument();

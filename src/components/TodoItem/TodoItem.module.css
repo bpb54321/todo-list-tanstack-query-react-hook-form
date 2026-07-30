@@ -9,6 +9,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.text {
+  color: #000;
+  font-family: var(--mantine-font-family);
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .actions {
   display: flex;
   align-items: center;

@@ -9,19 +9,18 @@ export type TodoItemProps = {
 export function TodoItem({ text }: TodoItemProps) {
   return (
     <div data-testid="todo-row" className={classes.row}>
-      <Checkbox
-        label={text}
-        size="xs"
-        styles={{
-          input: {
-            borderColor: "var(--mantine-color-gray-3)",
-          },
-          label: {
-            fontSize: "14px",
-            lineHeight: "20px",
-          },
-        }}
-      />
+      <div className={classes.content}>
+        <Checkbox
+          aria-label={text}
+          size="xs"
+          styles={{
+            input: {
+              borderColor: "var(--mantine-color-gray-3)",
+            },
+          }}
+        />
+        <span className={classes.text}>{text}</span>
+      </div>
       <div className={classes.actions}>
         <button
           type="button"
