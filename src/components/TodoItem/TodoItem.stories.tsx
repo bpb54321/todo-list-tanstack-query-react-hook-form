@@ -26,6 +26,7 @@ export const Default: Story = {
       "padding-inline-start",
     );
     await expect(paddingInlineStart).toBe("12px");
+    await expect(getComputedStyle(label).lineHeight).toBe("20px");
 
     const editButton = canvas.getByRole("button", { name: "Edit" });
     await expect(editButton).toBeInTheDocument();
@@ -39,6 +40,10 @@ export const Default: Story = {
 
     const editIcon = editButton.querySelector(".tabler-icon-writing-sign");
     await expect(editIcon).toBeInTheDocument();
+    const editButtonRect = editButton.getBoundingClientRect();
+    const editIconRect = editIcon!.getBoundingClientRect();
+    await expect(editIconRect.left - editButtonRect.left).toBe(4);
+    await expect(editIconRect.top - editButtonRect.top).toBe(4);
 
     const deleteButton = canvas.getByRole("button", { name: "Delete" });
     await expect(deleteButton).toBeInTheDocument();
@@ -58,6 +63,8 @@ export const Default: Story = {
     await expect(rowStyles.display).toBe("flex");
     await expect(rowStyles.alignItems).toBe("center");
     await expect(rowStyles.justifyContent).toBe("space-between");
+    await expect(rowStyles.paddingTop).toBe("12px");
+    await expect(rowStyles.paddingBottom).toBe("12px");
     await expect(row.getBoundingClientRect().width).toBe(476);
 
     const editRect = editButton.getBoundingClientRect();

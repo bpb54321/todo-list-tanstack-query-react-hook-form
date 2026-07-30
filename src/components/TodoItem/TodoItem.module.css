@@ -1,8 +1,10 @@
 .row {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 476px;
+  padding-block: 12px;
 }
 
 .actions {
@@ -12,6 +14,9 @@
 }
 
 .actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   width: 32px;
   height: 32px;
