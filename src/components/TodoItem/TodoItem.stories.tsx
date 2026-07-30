@@ -23,12 +23,17 @@ export const Default: Story = {
     await expect(getComputedStyle(checkbox).borderColor).toBe(
       "rgb(222, 226, 230)",
     );
+    await expect(getComputedStyle(checkbox).width).toBe("16px");
+    await expect(getComputedStyle(checkbox).height).toBe("16px");
+    await expect(getComputedStyle(checkbox).borderRadius).toBe("4px");
 
     const label = canvas.getByText("Finish project report");
     const paddingInlineStart = getComputedStyle(label).getPropertyValue(
       "padding-inline-start",
     );
     await expect(paddingInlineStart).toBe("12px");
+    await expect(getComputedStyle(label).color).toBe("rgb(0, 0, 0)");
+    await expect(getComputedStyle(label).fontSize).toBe("14px");
     await expect(getComputedStyle(label).lineHeight).toBe("20px");
 
     const editButton = canvas.getByRole("button", { name: "Edit" });
@@ -60,6 +65,10 @@ export const Default: Story = {
 
     const deleteIcon = deleteButton.querySelector(".tabler-icon-trash");
     await expect(deleteIcon).toBeInTheDocument();
+    const deleteButtonRect = deleteButton.getBoundingClientRect();
+    const deleteIconRect = deleteIcon!.getBoundingClientRect();
+    await expect(deleteIconRect.left - deleteButtonRect.left).toBe(4);
+    await expect(deleteIconRect.top - deleteButtonRect.top).toBe(4);
 
     const row = canvas.getByTestId("todo-row");
     const rowStyles = getComputedStyle(row);

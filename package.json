@@ -13,7 +13,8 @@
     "format:check": "prettier --check .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test-storybook": "vitest --project=storybook"
+    "test-storybook": "vitest run --project=storybook",
+    "test-visual": "vitest run --project=visual"
   },
   "dependencies": {
     "@mantine/core": "^9.5.0",

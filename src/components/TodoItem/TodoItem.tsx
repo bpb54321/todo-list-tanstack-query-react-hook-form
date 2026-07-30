@@ -11,9 +11,14 @@ export function TodoItem({ text }: TodoItemProps) {
     <div data-testid="todo-row" className={classes.row}>
       <Checkbox
         label={text}
+        size="xs"
         styles={{
           input: {
             borderColor: "var(--mantine-color-gray-3)",
+          },
+          label: {
+            fontSize: "14px",
+            lineHeight: "20px",
           },
         }}
       />
