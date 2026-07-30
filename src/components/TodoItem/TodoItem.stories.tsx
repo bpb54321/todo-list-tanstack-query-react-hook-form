@@ -52,5 +52,11 @@ export const Default: Story = {
 
     const deleteIcon = deleteButton.querySelector(".tabler-icon-trash");
     await expect(deleteIcon).toBeInTheDocument();
+
+    const row = canvas.getByTestId("todo-row");
+    const rowStyles = getComputedStyle(row);
+    await expect(rowStyles.display).toBe("flex");
+    await expect(rowStyles.alignItems).toBe("center");
+    await expect(rowStyles.justifyContent).toBe("space-between");
   },
 };
