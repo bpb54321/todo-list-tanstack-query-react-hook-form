@@ -30,7 +30,17 @@ export const Default: Story = {
     const editButton = canvas.getByRole("button", { name: "Edit" });
     await expect(editButton).toBeInTheDocument();
 
+    const editButtonStyles = getComputedStyle(editButton);
+    await expect(editButtonStyles.width).toBe("32px");
+    await expect(editButtonStyles.height).toBe("32px");
+
+    const editIcon = editButton.querySelector(".tabler-icon-writing-sign");
+    await expect(editIcon).toBeInTheDocument();
+
     const deleteButton = canvas.getByRole("button", { name: "Delete" });
     await expect(deleteButton).toBeInTheDocument();
+
+    const deleteIcon = deleteButton.querySelector(".tabler-icon-trash");
+    await expect(deleteIcon).toBeInTheDocument();
   },
 };
