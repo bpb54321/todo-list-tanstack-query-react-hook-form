@@ -10,16 +10,22 @@ export function TodoItem({ text }: TodoItemProps) {
   return (
     <div data-testid="todo-row" className={classes.row}>
       <Checkbox label={text} />
-      <button type="button" aria-label="Edit" className={classes.actionButton}>
-        <IconWritingSign />
-      </button>
-      <button
-        type="button"
-        aria-label="Delete"
-        className={classes.actionButton}
-      >
-        <IconTrash />
-      </button>
+      <div className={classes.actions}>
+        <button
+          type="button"
+          aria-label="Edit"
+          className={classes.actionButton}
+        >
+          <IconWritingSign />
+        </button>
+        <button
+          type="button"
+          aria-label="Delete"
+          className={classes.actionButton}
+        >
+          <IconTrash />
+        </button>
+      </div>
     </div>
   );
 }

@@ -58,5 +58,11 @@ export const Default: Story = {
     await expect(rowStyles.display).toBe("flex");
     await expect(rowStyles.alignItems).toBe("center");
     await expect(rowStyles.justifyContent).toBe("space-between");
+    await expect(row.getBoundingClientRect().width).toBe(476);
+
+    const editRect = editButton.getBoundingClientRect();
+    const deleteRect = deleteButton.getBoundingClientRect();
+    const gapBetweenActions = deleteRect.left - editRect.right;
+    await expect(gapBetweenActions).toBe(8);
   },
 };
