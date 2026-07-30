@@ -9,7 +9,14 @@ export type TodoItemProps = {
 export function TodoItem({ text }: TodoItemProps) {
   return (
     <div data-testid="todo-row" className={classes.row}>
-      <Checkbox label={text} />
+      <Checkbox
+        label={text}
+        styles={{
+          input: {
+            borderColor: "var(--mantine-color-gray-3)",
+          },
+        }}
+      />
       <div className={classes.actions}>
         <button
           type="button"

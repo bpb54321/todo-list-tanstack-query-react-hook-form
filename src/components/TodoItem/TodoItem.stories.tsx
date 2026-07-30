@@ -20,6 +20,9 @@ export const Default: Story = {
       name: "Finish project report",
     });
     await expect(checkbox).toBeInTheDocument();
+    await expect(getComputedStyle(checkbox).borderColor).toBe(
+      "rgb(222, 226, 230)",
+    );
 
     const label = canvas.getByText("Finish project report");
     const paddingInlineStart = getComputedStyle(label).getPropertyValue(
