@@ -5,6 +5,8 @@
   justify-content: space-between;
   width: 476px;
   padding-block: 12px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .actions {

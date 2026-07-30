@@ -1,19 +1,20 @@
-import type { Preview } from '@storybook/react-vite'
-import '@mantine/core/styles.css';
-import { MantineProvider } from '@mantine/core';
+import type { Preview } from "@storybook/react-vite";
+import "@fontsource/roboto/400.css";
+import "@mantine/core/styles.css";
+import { MantineProvider } from "@mantine/core";
 
 const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
   },
   decorators: [
     (Story) => (
-      <MantineProvider>
+      <MantineProvider theme={{ fontFamily: "Roboto, sans-serif" }}>
         <Story />
       </MantineProvider>
     ),

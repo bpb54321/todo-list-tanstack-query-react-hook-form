@@ -17,6 +17,7 @@
     "test-visual": "vitest run --project=visual"
   },
   "dependencies": {
+    "@fontsource/roboto": "^5.3.0",
     "@mantine/core": "^9.5.0",
     "@mantine/hooks": "^9.5.0",
     "@tabler/icons-react": "^3.45.0",
