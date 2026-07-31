@@ -14,6 +14,7 @@ const dirname =
 export default defineConfig({
   plugins: [react()],
   test: {
+    globals: true,
     projects: [
       {
         extends: true,

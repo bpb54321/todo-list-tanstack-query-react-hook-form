@@ -4,22 +4,35 @@ import classes from "./TodoItem.module.css";
 
 export type TodoItemProps = {
   text: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
 };
 
-export function TodoItem({ text }: TodoItemProps) {
+export function TodoItem({ text, checked, onChange }: TodoItemProps) {
   return (
     <div data-testid="todo-row" className={classes.row}>
       <div className={classes.content}>
         <Checkbox
           aria-label={text}
+          checked={checked}
+          onChange={(event) => onChange(event.currentTarget.checked)}
           size="xs"
           styles={{
             input: {
-              borderColor: "var(--mantine-color-gray-3)",
+              borderColor: checked
+                ? "var(--mantine-color-blue-filled)"
+                : "var(--mantine-color-gray-3)",
+              backgroundColor: checked
+                ? "var(--mantine-color-blue-filled)"
+                : undefined,
             },
           }}
         />
-        <span className={classes.text}>{text}</span>
+        <span
+          className={`${classes.text}${checked ? ` ${classes.textChecked}` : ""}`}
+        >
+          {text}
+        </span>
       </div>
       <div className={classes.actions}>
         <button

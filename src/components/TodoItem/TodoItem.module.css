@@ -22,6 +22,10 @@
   line-height: 20px;
 }
 
+.textChecked {
+  color: var(--mantine-color-gray-6);
+}
+
 .actions {
   display: flex;
   align-items: center;
