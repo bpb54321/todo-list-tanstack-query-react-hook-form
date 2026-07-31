@@ -24,14 +24,14 @@ export function TodoItem({ text }: TodoItemProps) {
       <div className={classes.actions}>
         <button
           type="button"
-          aria-label="Edit"
+          aria-label={`Edit ${text}`}
           className={classes.actionButton}
         >
           <IconWritingSign />
         </button>
         <button
           type="button"
-          aria-label="Delete"
+          aria-label={`Delete ${text}`}
           className={classes.actionButton}
         >
           <IconTrash />
