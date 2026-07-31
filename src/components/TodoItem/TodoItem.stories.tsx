@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect } from "storybook/test";
+import { expect, fn, userEvent } from "storybook/test";
 import { TodoItem } from "./TodoItem";
 
 const meta = {
@@ -7,6 +7,8 @@ const meta = {
   component: TodoItem,
   args: {
     text: "Finish project report",
+    checked: false,
+    onChange: fn(),
   },
 } satisfies Meta<typeof TodoItem>;
 
@@ -36,7 +38,7 @@ export const Default: Story = {
     await expect(content).not.toBeNull();
     await expect(getComputedStyle(content!).gap).toBe("12px");
 
-    const editButton = canvas.getByRole("button", { name: "Edit" });
+    const editButton = canvas.getByRole("button", { name: /Edit/ });
     await expect(editButton).toBeInTheDocument();
 
     const editButtonStyles = getComputedStyle(editButton);
@@ -53,7 +55,7 @@ export const Default: Story = {
     await expect(editIconRect.left - editButtonRect.left).toBe(4);
     await expect(editIconRect.top - editButtonRect.top).toBe(4);
 
-    const deleteButton = canvas.getByRole("button", { name: "Delete" });
+    const deleteButton = canvas.getByRole("button", { name: /Delete/ });
     await expect(deleteButton).toBeInTheDocument();
 
     const deleteButtonStyles = getComputedStyle(deleteButton);
@@ -83,5 +85,30 @@ export const Default: Story = {
     const deleteRect = deleteButton.getBoundingClientRect();
     const gapBetweenActions = deleteRect.left - editRect.right;
     await expect(gapBetweenActions).toBe(8);
+  },
+};
+
+export const Checked: Story = {
+  args: {
+    checked: true,
+  },
+  play: async ({ canvas, args }) => {
+    const checkbox = canvas.getByRole("checkbox", {
+      name: "Finish project report",
+    });
+    await expect(checkbox).toBeChecked();
+
+    const checkboxStyles = getComputedStyle(checkbox);
+    await expect(checkboxStyles.borderColor).toBe("rgb(34, 139, 230)");
+    await expect(checkboxStyles.backgroundColor).toBe("rgb(34, 139, 230)");
+
+    const text = canvas.getByText("Finish project report");
+    const textStyles = getComputedStyle(text);
+    await expect(textStyles.color).toBe("rgb(134, 142, 150)");
+    await expect(textStyles.textDecorationLine).toBe("line-through");
+
+    await userEvent.click(checkbox);
+    await expect(args.onChange).toHaveBeenCalledTimes(1);
+    await expect(args.onChange).toHaveBeenCalledWith(false);
   },
 };
