@@ -16,7 +16,7 @@
 }
 
 .text {
-  color: #000;
+  color: var(--mantine-color-black);
   font-family: var(--mantine-font-family);
   font-size: 14px;
   line-height: 20px;
