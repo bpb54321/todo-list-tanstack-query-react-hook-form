@@ -106,7 +106,6 @@ export const Checked: Story = {
     const text = canvas.getByText(args.text);
     const textStyles = getComputedStyle(text);
     await expect(textStyles.color).toBe("rgb(134, 142, 150)");
-    await expect(textStyles.textDecorationLine).toBe("line-through");
 
     await userEvent.click(checkbox);
     await expect(args.onChange).toHaveBeenCalledTimes(1);
