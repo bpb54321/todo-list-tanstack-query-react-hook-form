@@ -17,9 +17,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  play: async ({ canvas }) => {
+  play: async ({ canvas, args }) => {
     const checkbox = canvas.getByRole("checkbox", {
-      name: "Finish project report",
+      name: args.text,
     });
     await expect(checkbox).toBeInTheDocument();
     await expect(getComputedStyle(checkbox).borderColor).toBe(
@@ -29,7 +29,7 @@ export const Default: Story = {
     await expect(getComputedStyle(checkbox).height).toBe("16px");
     await expect(getComputedStyle(checkbox).borderRadius).toBe("4px");
 
-    const text = canvas.getByText("Finish project report");
+    const text = canvas.getByText(args.text);
     await expect(getComputedStyle(text).color).toBe("rgb(0, 0, 0)");
     await expect(getComputedStyle(text).fontSize).toBe("14px");
     await expect(getComputedStyle(text).lineHeight).toBe("20px");
@@ -90,11 +90,12 @@ export const Default: Story = {
 
 export const Checked: Story = {
   args: {
+    text: "Buy groceries",
     checked: true,
   },
   play: async ({ canvas, args }) => {
     const checkbox = canvas.getByRole("checkbox", {
-      name: "Finish project report",
+      name: args.text,
     });
     await expect(checkbox).toBeChecked();
 
@@ -102,7 +103,7 @@ export const Checked: Story = {
     await expect(checkboxStyles.borderColor).toBe("rgb(34, 139, 230)");
     await expect(checkboxStyles.backgroundColor).toBe("rgb(34, 139, 230)");
 
-    const text = canvas.getByText("Finish project report");
+    const text = canvas.getByText(args.text);
     const textStyles = getComputedStyle(text);
     await expect(textStyles.color).toBe("rgb(134, 142, 150)");
     await expect(textStyles.textDecorationLine).toBe("line-through");
