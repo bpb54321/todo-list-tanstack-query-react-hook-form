@@ -28,5 +28,11 @@ export const Default: Story = {
     const lineStyles = getComputedStyle(line!);
     await expect(lineStyles.strokeDasharray).toBe("12px, 12px");
     await expect(lineStyles.stroke).toBe("rgb(222, 226, 230)");
+
+    // Expect the divider to be the same width as the companion todo
+    const todoRows = canvas.getAllByTestId("todo-row");
+    await expect(separators[0].getBoundingClientRect().width).toBe(
+      todoRows[0].getBoundingClientRect().width,
+    );
   },
 };

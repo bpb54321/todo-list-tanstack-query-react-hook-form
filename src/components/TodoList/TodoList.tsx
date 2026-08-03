@@ -1,5 +1,6 @@
 import { DashedDivider } from "../DashedDivider/DashedDivider";
 import { TodoItem } from "../TodoItem/TodoItem";
+import classes from "./TodoList.module.css";
 
 export type Todo = {
   id: string;
@@ -13,7 +14,7 @@ export type TodoListProps = {
 
 export function TodoList({ todos }: TodoListProps) {
   return (
-    <div>
+    <div className={classes.list}>
       {todos.map((todo, index) => (
         <div key={todo.id}>
           <TodoItem
