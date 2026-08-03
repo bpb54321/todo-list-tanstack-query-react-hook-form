@@ -9,6 +9,8 @@ const meta = {
     text: "Finish project report",
     checked: false,
     onChange: fn(),
+    onEdit: fn(),
+    onDelete: fn(),
   },
 } satisfies Meta<typeof TodoItem>;
 
