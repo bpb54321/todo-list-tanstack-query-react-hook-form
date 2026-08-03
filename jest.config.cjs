@@ -4,6 +4,6 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "\\.visual\\.test\\.ts(x)?$"],
   moduleNameMapper: {
-    "\\.(css)$": "<rootDir>/__mocks__/styleMock.cjs",
+    "\\.(css)$": "<rootDir>/__mocks__/styleMock.ts",
   },
 };
