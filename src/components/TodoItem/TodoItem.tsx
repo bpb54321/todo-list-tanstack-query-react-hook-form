@@ -6,9 +6,10 @@ export type TodoItemProps = {
   text: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
+  onEdit: () => void;
 };
 
-export function TodoItem({ text, checked, onChange }: TodoItemProps) {
+export function TodoItem({ text, checked, onChange, onEdit }: TodoItemProps) {
   return (
     <div data-testid="todo-row" className={classes.row}>
       <div className={classes.content}>
@@ -39,6 +40,7 @@ export function TodoItem({ text, checked, onChange }: TodoItemProps) {
           type="button"
           aria-label={`Edit ${text}`}
           className={classes.actionButton}
+          onClick={onEdit}
         >
           <IconWritingSign />
         </button>
