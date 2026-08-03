@@ -14,7 +14,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "vitest run --project=storybook",
-    "test-visual": "vitest run --project=visual"
+    "test-visual": "vitest run --project=visual",
+    "validate": "yarn format:check && yarn lint && yarn test && yarn test-storybook && yarn test-visual"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.3.0",
