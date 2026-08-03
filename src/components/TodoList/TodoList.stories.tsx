@@ -34,5 +34,11 @@ export const Default: Story = {
     await expect(separators[0].getBoundingClientRect().width).toBe(
       todoRows[0].getBoundingClientRect().width,
     );
+
+    // 4px gap between the divider and the next todo item
+    const gap =
+      todoRows[1].getBoundingClientRect().top -
+      separators[0].getBoundingClientRect().bottom;
+    await expect(gap).toBe(4);
   },
 };
