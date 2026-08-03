@@ -1,4 +1,4 @@
-import { Divider } from "@mantine/core";
+import { DashedDivider } from "../DashedDivider/DashedDivider";
 import { TodoItem } from "../TodoItem/TodoItem";
 
 export type Todo = {
@@ -23,7 +23,7 @@ export function TodoList({ todos }: TodoListProps) {
             onEdit={() => {}}
             onDelete={() => {}}
           />
-          {index < todos.length - 1 && <Divider variant="dashed" />}
+          {index < todos.length - 1 && <DashedDivider />}
         </div>
       ))}
     </div>

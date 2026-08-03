@@ -22,8 +22,11 @@ export const Default: Story = {
     const separators = canvas.getAllByRole("separator");
     await expect(separators).toHaveLength(1);
 
-    const dividerStyles = getComputedStyle(separators[0]);
-    await expect(dividerStyles.borderTopStyle).toBe("dashed");
-    await expect(dividerStyles.borderTopColor).toBe("rgb(222, 226, 230)");
+    // 12px dash + 12px gap to match the Figma dashPattern [12, 12]
+    const line = separators[0].querySelector("line");
+    await expect(line).not.toBeNull();
+    const lineStyles = getComputedStyle(line!);
+    await expect(lineStyles.strokeDasharray).toBe("12px, 12px");
+    await expect(lineStyles.stroke).toBe("rgb(222, 226, 230)");
   },
 };
