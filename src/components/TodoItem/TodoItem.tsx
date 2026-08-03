@@ -7,9 +7,16 @@ export type TodoItemProps = {
   checked: boolean;
   onChange: (checked: boolean) => void;
   onEdit: () => void;
+  onDelete: () => void;
 };
 
-export function TodoItem({ text, checked, onChange, onEdit }: TodoItemProps) {
+export function TodoItem({
+  text,
+  checked,
+  onChange,
+  onEdit,
+  onDelete,
+}: TodoItemProps) {
   return (
     <div data-testid="todo-row" className={classes.row}>
       <div className={classes.content}>
@@ -48,6 +55,7 @@ export function TodoItem({ text, checked, onChange, onEdit }: TodoItemProps) {
           type="button"
           aria-label={`Delete ${text}`}
           className={classes.actionButton}
+          onClick={onDelete}
         >
           <IconTrash />
         </button>

@@ -11,6 +11,7 @@ function renderTodoItem(props: Partial<TodoItemProps> = {}) {
         checked={false}
         onChange={jest.fn()}
         onEdit={jest.fn()}
+        onDelete={jest.fn()}
         {...props}
       />
     </MantineProvider>,
@@ -23,10 +24,18 @@ describe("TodoItem", () => {
     const onEdit = jest.fn();
     renderTodoItem({ text: "Buy milk", onEdit });
 
-    await user.click(
-      screen.getByRole("button", { name: /edit buy milk/i }),
-    );
+    await user.click(screen.getByRole("button", { name: /edit buy milk/i }));
 
     expect(onEdit).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls onDelete when the delete button is clicked", async () => {
+    const user = userEvent.setup();
+    const onDelete = jest.fn();
+    renderTodoItem({ text: "Buy milk", onDelete });
+
+    await user.click(screen.getByRole("button", { name: /delete buy milk/i }));
+
+    expect(onDelete).toHaveBeenCalledTimes(1);
   });
 });
