@@ -21,5 +21,9 @@ export const Default: Story = {
   play: async ({ canvas }) => {
     const separators = canvas.getAllByRole("separator");
     await expect(separators).toHaveLength(1);
+
+    const dividerStyles = getComputedStyle(separators[0]);
+    await expect(dividerStyles.borderTopStyle).toBe("dashed");
+    await expect(dividerStyles.borderTopColor).toBe("rgb(222, 226, 230)");
   },
 };

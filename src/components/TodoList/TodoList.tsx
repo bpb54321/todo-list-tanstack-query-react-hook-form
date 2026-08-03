@@ -23,7 +23,7 @@ export function TodoList({ todos }: TodoListProps) {
             onEdit={() => {}}
             onDelete={() => {}}
           />
-          {index < todos.length - 1 && <Divider />}
+          {index < todos.length - 1 && <Divider variant="dashed" />}
         </div>
       ))}
     </div>
