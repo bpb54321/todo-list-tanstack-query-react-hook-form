@@ -14,7 +14,7 @@ export type TodoListProps = {
 
 export function TodoList({ todos }: TodoListProps) {
   return (
-    <div className={classes.list} data-name="todo-list-container">
+    <div className={classes.list} data-testid="todo-list-container">
       {todos.map((todo, index) => (
         <div key={todo.id} data-name="todo-item-group">
           <TodoItem

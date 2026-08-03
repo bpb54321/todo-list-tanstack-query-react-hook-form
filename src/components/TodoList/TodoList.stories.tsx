@@ -42,3 +42,16 @@ export const Default: Story = {
     await expect(gap).toBe(4);
   },
 };
+
+// Data exactly matches the full list in the Figma mock
+export const FullList: Story = {
+  args: {
+    todos: [
+      { id: "1", text: "Buy groceries", checked: true },
+      { id: "2", text: "Finish project report", checked: false },
+      { id: "3", text: "Schedule dentist appointment", checked: false },
+      { id: "4", text: "Read a new book", checked: true },
+      { id: "5", text: "Clean the apartment", checked: false },
+    ],
+  },
+};
